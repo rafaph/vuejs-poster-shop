@@ -1,7 +1,7 @@
 {
   "name": "vuejs-poster-shop",
   "version": "1.0.0",
-  "description": "Ultimate Vue.js Developers Course - App 1",
+  "description": "Project 1: Vue.js Poster Shop - Ultimate Vue.js Developers Course",
   "author": "Raphael Castro <rafaphcastro@gmail.com>",
   "license": "UNLICENSED",
   "dependencies": {
