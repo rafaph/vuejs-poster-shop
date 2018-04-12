@@ -1,0 +1,12 @@
+{
+  "name": "vuejs-poster-shop",
+  "version": "1.0.0",
+  "description": "Ultimate Vue.js Developers Course - App 1",
+  "author": "Raphael Castro <rafaphcastro@gmail.com>",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "scrollmonitor": "^1.2.4",
+    "vue": "^2.5.16"
+  }
+}
