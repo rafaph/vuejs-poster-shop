@@ -47,10 +47,10 @@ See the completed project here: [http://vuejs-poster-shop.vuejsdevelopers.com/](
     npm install
     ```
 
-3. Create a `.env` file by copying the sample
+3. Create a `.env` file by copying the example
 
     ```
-    cp .env_sample .env
+    cp .env_example .env
     ```
     
     Now edit the .env file and replace the `IMGUR_CLIENT_ID` with the client ID provided in the pre-installation
