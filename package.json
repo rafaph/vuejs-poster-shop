@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Project 1: Vue.js Poster Shop - Ultimate Vue.js Developers Course",
   "author": "Raphael Castro <rafaphcastro@gmail.com>",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/rafaph/vuejs-poster-shop"
+  },
   "license": "UNLICENSED",
   "dependencies": {
     "axios": "^0.18.0",
