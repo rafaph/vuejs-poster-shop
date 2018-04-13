@@ -62,7 +62,7 @@ server = Server(app.wsgi_app)
 server.watch('assets/public')
 server.watch('index.html')
 
-# initlization
+# initialization
 
 if __name__ == '__main__':
     server.serve(
