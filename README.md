@@ -14,7 +14,7 @@ See the completed project here: [http://vuejs-poster-shop.vuejsdevelopers.com/](
 2. Register Oauth 2 access to the [Imgur API](https://api.imgur.com/oauth2/addclient).
 
     Register for OAuth 2 authorization without a callback URL. You can name your application anything you like and you don't need a callback URL. The important thing is that you get a *client ID*.
-3. Create a python virtualenv and install the dependencies listed in requirements.txt using pip command.
+3. Create a python virtualenv with python 3 and install the dependencies listed in requirements.txt using pip command.
 
 #### Installation
 

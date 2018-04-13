@@ -1,34 +1,51 @@
+var PRICE = 9.99;
+var LOAD_NUM = 10;
+
 new Vue({
     el: '#app',
     data: {
         total: 0.0,
         items: [],
+        results: [],
         cart: [],
-        newSearch: 'anime',
+        newSearch: '90s',
         lastSearch: '',
-        loading: false
+        loading: false,
+        price: PRICE
     },
     methods: {
+        appendItems: function () {
+            var append;
+
+            if (this.items.length < this.results.length) {
+                append = this.results.slice(this.items.length, this.items.length + LOAD_NUM);
+                this.items = this.items.concat(append);
+            }
+        },
         onSubmit: function () {
-            var self = this;
+            var self;
+            if (this.newSearch.length) {
+                self = this;
+                this.items = [];
+                self.results = [];
+                this.loading = true;
 
-            this.items = [];
-            this.loading = true;
-
-            this.$http
-                .get('/search/'.concat(this.newSearch))
-                .then(function (res) {
-                    self.lastSearch = self.newSearch;
-                    self.loading = false;
-                    self.items = res.data;
-                });
+                this.$http
+                    .get('/search/'.concat(this.newSearch))
+                    .then(function (res) {
+                        self.lastSearch = self.newSearch;
+                        self.loading = false;
+                        self.results = res.data;
+                        self.appendItems();
+                    });
+            }
         },
         addItem: function (index) {
             var i;
             var cartSize = this.cart.length;
             var item = this.items[index];
 
-            this.total += 9.99;
+            this.total += PRICE;
 
             for (i = 0; i < cartSize; i++) {
                 if (this.cart[i].id == item.id) {
@@ -41,7 +58,7 @@ new Vue({
                 id: item.id,
                 title: item.title,
                 qty: 1,
-                price: 9.99
+                price: PRICE
             });
         },
         inc: function (item) {
@@ -65,12 +82,25 @@ new Vue({
             }
         }
     },
+    computed: {
+        noMoreItems: function () {
+            return this.items.length === this.results.length && this.results.length > 0;
+        }
+    },
     filters: {
         currency: function (price) {
             return '$'.concat(price.toFixed(2));
         }
     },
-    created: function() {
+    mounted: function () {
         this.onSubmit();
+
+        var self = this;
+        var elem = document.getElementById('product-list-bottom');
+        var watcher = scrollMonitor.create(elem);
+
+        watcher.enterViewport(function () {
+            self.appendItems();
+        });
     }
 });
