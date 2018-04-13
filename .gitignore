@@ -1,6 +1,7 @@
 .idea
 node_modules
 .vscode
-package-lock.json
+.python-version
 .env
+package-lock.json
 *.pyc

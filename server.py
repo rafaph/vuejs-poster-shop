@@ -1,11 +1,9 @@
-# -*- coding: utf-8 -*-
-from __future__ import print_function, unicode_literals
-
 import os
 import requests
 from dotenv import load_dotenv
 from flask import send_file, jsonify
 from flask_multistatic import MultiStaticFlask
+from livereload import Server
 
 # load .env variables
 
@@ -57,10 +55,18 @@ def search(query):
         'detail': response.text
     }), 400
 
-# initialization
+
+# Livereload configuration
+
+server = Server(app.wsgi_app)
+server.watch('assets/public')
+server.watch('index.html')
+
+# initlization
 
 if __name__ == '__main__':
-    app.run(
+    server.serve(
         port=int(os.environ['PORT']),
+        liveport=35729,
         debug=os.environ['PYTHON_ENV'] == 'development'
     )
